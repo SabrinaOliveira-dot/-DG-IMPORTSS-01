@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> DG IMPORTSS 01</title>
+  
+  <!-- Fontes do Google -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  
+  <!-- Estilos e Scripts Externos (Tailwind e Ícones) -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js"></script>
+  
+  <!-- Arquivo de CSS Personalizado -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="background: rgb(0, 0, 0);">
+  <div class="molde-aplicativo">
+    
+    <!-- CABEÇALHO / MENU SUPERIOR -->
+    <header class="efeito-vidro sticky top-0 z-50">
+      <div class="conteiner h-[72px] flex items-center justify-between gap-3">
+        <button data-rota="inicio" class="bg-transparent border-0 text-left font-bold tracking-[-.08em] text-2xl" style="color: rgb(218, 241, 222);">DG IMPORTSS 01</button>
+        
+        <!-- Navegação Desktop -->
+        <nav class="navegacao-desktop flex items-center gap-5" aria-label="Navegação principal">
+          <button class="link-navegacao active" data-rota="inicio">HOME</button>
+          <button class="link-navegacao" data-rota="catalogo">TÊNIS</button>
+          <button class="link-navegacao" data-rota="marcas">MARCAS</button>
+          <button class="link-navegacao" data-rota="sobre">SOBRE MIM</button>
+          <button class="link-navegacao" data-rota="contato">CONTATO</button>
+        </nav>
+        
+        <!-- Botões de Ação (Busca, Favoritos, Carrinho, Menu Mobile) -->
+        <div class="flex items-center gap-2">
+          <button class="botao-icone hidden sm:grid" id="botaoBuscar" aria-label="Buscar tênis">
+            <i data-lucide="search"></i>
+          </button> 
+          <button class="botao-icone" id="botaoFavoritos" aria-label="Ver favoritos">
+            <i data-lucide="heart"></i><span class="selo-notificacao" id="contadorFavoritos">0</span>
+          </button> 
+          <button class="botao-icone" data-rota="carrinho" aria-label="Abrir carrinho">
+            <i data-lucide="shopping-bag"></i><span class="selo-notificacao" id="contadorCarrinho">0</span>
+          </button> 
+          <button class="botao-icone md:hidden" id="botaoMenu" aria-label="Abrir menu" aria-expanded="false">
+            <i data-lucide="menu"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Menu de Celular (Escondido no Desktop) -->
+      <div id="menuCelularId" class="menu-celular border-t border-[#daf1de24] px-5 pb-5 md:hidden">
+        <nav class="grid gap-4 pt-4" aria-label="Menu mobile">
+          <button class="link-navegacao text-left" data-rota="inicio">HOME</button>
+          <button class="link-navegacao text-left" data-rota="catalogo">TÊNIS</button>
+          <button class="link-navegacao text-left" data-rota="marcas">MARCAS</button>
+          <button class="link-navegacao text-left" data-rota="sobre">SOBRE MIM</button>
+          <button class="link-navegacao text-left" data-rota="contato">CONTATO</button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- TELA: INÍCIO (HOME) -->
+      <section id="telaInicio" class="tela-visivel active">
+        <!-- Banner Principal -->
+        <section class="secao-hero">
+          <div class="carrossel-hero" id="carrosselHero"></div>
+          <div class="pontos-carrossel" id="pontosCarrosselHero"></div>
+          <div class="conteiner relative z-10">
+            <p class="texto-pequeno mb-5" style="color: rgb(142, 182, 155);">Loja desde de · 2026</p>
+            <h1 class="fonte-destaque titulo-secao max-w-[760px]" style="color: rgb(218, 241, 222);">ENCONTRE O TÊNIS QUE COMBINA COM VOCÊ.</h1>
+            <p class="texto-suave mt-6 max-w-[540px] text-lg leading-relaxed" style="color: rgb(218, 241, 222);">Tênis selecionados para diferentes estilos, momentos e necessidades. Encontre seu próximo par.</p>
+            <div class="flex flex-wrap gap-3 mt-9">
+              <button data-rota="catalogo" class="botao botao-primario">VER TÊNIS</button> 
+              <button data-rota="marcas" class="botao botao-contorno">CONHECER MARCAS</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Faixa de Benefícios -->
+        <section class="faixa-beneficios">
+          <div class="conteiner grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="item-beneficio">
+              <i data-lucide="shield-check"></i>
+              <span>Compra segura</span>
+            </div>
+            <div class="item-beneficio">
+              <i data-lucide="truck"></i>
+              <span>Envio para todo o Brasil</span>
+            </div>
+            <div class="item-beneficio">
+              <i data-lucide="repeat-2"></i>
+              <span>Troca facilitada</span>
+            </div>
+            <div class="item-beneficio">
+              <i data-lucide="message-circle"></i>
+              <span>Atendimento no WhatsApp</span>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Marcas na Home -->
+        <section class="secao">
+          <div class="conteiner">
+            <p class="texto-pequeno">Escolha seu movimento</p>
+            <h2 class="fonte-destaque titulo-secao mt-3 mb-10" style="color: rgb(218, 241, 222);">NOSSAS MARCAS</h2>
+            <div id="marcasInicio" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3"></div>
+          </div>
+        </section>
+        
+        <!-- Produtos em Destaque -->
+        <section class="secao bg-[#0B2B26]">
+          <div class="conteiner">
+            <div class="flex flex-wrap justify-between items-end gap-5 mb-9">
+              <div>
+                <p class="texto-pequeno"> DG IMPORTSS 01</p>
+                <h2 class="fonte-destaque titulo-secao mt-3" style="color: rgb(218, 241, 222);">TÊNIS EM DESTAQUE</h2>
+              </div>
+              <button data-rota="catalogo" class="botao botao-contorno">VER TODOS OS TÊNIS</button>
+            </div>
+            <div id="gradeDestaques" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+          </div>
+        </section>
+
+        <!-- Perguntas Frequentes -->
+        <section class="secao">
+          <div class="conteiner max-w-[820px]">
+            <p class="texto-pequeno">Tire suas dúvidas</p>
+            <h2 class="fonte-destaque titulo-secao mt-3 mb-10" style="color: rgb(218, 241, 222);">PERGUNTAS FREQUENTES</h2>
+            <div class="lista-perguntas">
+              <details class="item-pergunta">
+                <summary>Como sei qual tamanho escolher?</summary>
+                <p>Nossos tênis seguem a numeração padrão brasileira. Em caso de dúvida entre dois tamanhos, chame no WhatsApp que ajudamos você a escolher.</p>
+              </details>
+              <details class="item-pergunta">
+                <summary>Quanto tempo leva a entrega?</summary>
+                <p>O prazo varia de acordo com a sua região. Assim que o pedido é fechado pelo WhatsApp, informamos o prazo estimado para o seu endereço.</p>
+              </details>
+              <details class="item-pergunta">
+                <summary>Quais formas de pagamento vocês aceitam?</summary>
+                <p>Aceitamos Pix e cartão. Todos os detalhes de pagamento são combinados diretamente na conversa do WhatsApp.</p>
+              </details>
+              <details class="item-pergunta">
+                <summary>Posso trocar se o tamanho não servir?</summary>
+                <p>Sim! Oferecemos troca facilitada. É só entrar em contato pelo WhatsApp informando o número do seu pedido.</p>
+              </details>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- TELA: CATÁLOGO DE TÊNIS -->
+      <section id="telaCatalogo" class="tela-visivel">
+        <section class="secao">
+          <div class="conteiner">
+            <p class="texto-pequeno">Todos os modelos</p>
+            <h1 class="fonte-destaque titulo-secao mt-3" style="color: rgb(218, 241, 222);">CATÁLOGO DE TÊNIS</h1>
+            
+            <!-- Filtros -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3 mt-10">
+              <input id="entradaBusca" class="campo-filtro lg:col-span-2" type="search" placeholder="Buscar por nome, modelo ou marca">
+              <select id="filtroMarca" class="campo-filtro"></select>
+              <select id="filtroTamanho" class="campo-filtro"></select>
+              <select id="filtroCategoria" class="campo-filtro">
+                <option value="">Categorias</option>
+                <option>Corrida</option>
+                <option>Casual</option>
+                <option>Basquete</option>
+              </select>
+              <select id="filtroOrdenacao" class="campo-filtro">
+                <option value="recent">Mais recentes</option>
+                <option value="low">Menor preço</option>
+                <option value="high">Maior preço</option>
+                <option value="sold">Mais vendidos</option>
+                <option value="promo">Promoções</option>
+              </select>
+            </div>
+            
+            <div class="flex flex-wrap items-center justify-between gap-4 mt-5">
+              <button id="filtroPromocao" class="botao botao-contorno">APENAS PROMOÇÕES</button>
+              <div class="flex items-center gap-4">
+                <p id="contadorResultados" class="texto-suave text-sm"></p>
+                <button id="limparFiltros" class="text-sm underline text-[#8EB69B]">Limpar filtros</button>
+              </div>
+            </div>
+            
+            <!-- Lista de Produtos -->
+            <div id="gradeCatalogo" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-9"></div>
+            
+            <!-- Mensagem de Vazio -->
+            <div id="catalogoVazio" class="estado-vazio hidden">
+              <i data-lucide="search-x" class="mx-auto mb-4"></i>
+              <p>Nenhum tênis encontrado com estes filtros.</p>
+              <button id="limparVazio" class="botao botao-contorno mt-5">LIMPAR FILTROS</button>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- TELA: DETALHES DO PRODUTO -->
+      <section id="telaProduto" class="tela-visivel">
+        <section class="secao">
+          <div class="conteiner">
+            <button data-rota="catalogo" class="text-sm text-[#8EB69B] mb-8 inline-flex gap-2 items-center">
+              <i data-lucide="arrow-left"></i> VOLTAR AO CATÁLOGO
+            </button>
+            <div id="detalheProduto"></div>
+          </div>
+        </section>
+      </section>
+
+      <!-- TELA: CARRINHO -->
+      <section id="telaCarrinho" class="tela-visivel">
+        <section class="secao">
+          <div class="conteiner">
+            <p class="texto-pequeno">Seu pedido</p>
+            <h1 class="fonte-destaque titulo-secao mt-3 mb-10" style="color: rgb(218, 241, 222);">SEU CARRINHO</h1>
+            <div id="conteudoCarrinho"></div>
+          </div>
+        </section>
+      </section>
+
+      <!-- TELA: MARCAS -->
+      <section id="telaMarcas" class="tela-visivel">
+        <section class="secao">
+          <div class="conteiner">
+            <p class="texto-pequeno">Curadoria por marca</p>
+            <h1 class="fonte-destaque titulo-secao mt-3 mb-10" style="color: rgb(218, 241, 222);">MARCAS EM MOVIMENTO</h1>
+            <div id="gradeMarcas" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+          </div>
+        </section>
+      </section>
+
+      <!-- TELA: SOBRE MIM -->
+      <section id="telaSobre" class="tela-visivel">
+        <section class="secao">
+          <div class="conteiner grid md:grid-cols-2 gap-10 items-center">
+            <img class="w-full h-[460px] object-cover" loading="lazy" src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Retrato">
+            <div>
+              <p class="texto-pequeno">Sobre mim</p>
+              <h1 class="fonte-destaque titulo-secao mt-3" style="color: rgb(218, 241, 222);">SOBRE MIM</h1>
+              <p class="texto-suave leading-relaxed mt-6 text-[17px]">
+                Nossa loja nasceu da paixão por movimento, cultura urbana e escolhas que acompanham histórias. Nossa curadoria une conforto, identidade e qualidade para tornar cada passo mais seu.
+              </p>
+              <p class="text-[#8EB69B] font-semibold mt-6"> Douglas Oliveira</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- TELA: CONTATO -->
+      <section id="telaContato" class="tela-visivel">
+        <section class="secao">
+          <div class="conteiner grid lg:grid-cols-2 gap-12">
+            <div>
+              <p class="texto-pequeno">Vamos conversar</p>
+              <h1 class="fonte-destaque titulo-secao mt-3" style="color: rgb(218, 241, 222);">ENTRE EM CONTATO</h1>
+              <p class="texto-suave mt-5 max-w-md leading-relaxed text-[17px]">
+                Dúvidas sobre tamanho, modelos ou disponibilidade? Fale diretamente com nossa equipe para encontrar o seu próximo par.
+              </p>
+              <button id="whatsappContato" class="botao botao-primario mt-8">CHAMAR NO WHATSAPP</button>
+            </div>
+            <address class="not-italic grid sm:grid-cols-2 gap-6 text-sm">
+              <div><p class="texto-pequeno">WhatsApp</p><p class="mt-2">(11) 94832-5664</p></div>
+              <div><p class="texto-pequeno">Instagram</p><p class="mt-2">dg.importss_01</p></div>
+              <div><p class="texto-pequeno">Atendimento</p><p class="mt-2">Seg–Sex · 24h</p></div>
+            </address>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="bg-[#031413] border-t border-[#daf1de24] py-14">
+      <div class="conteiner grid grid-cols-2 md:grid-cols-5 gap-8 text-sm">
+        <div class="col-span-2">
+          <p class="font-bold tracking-[-.08em] text-2xl">DG IMPORTSS 01</p>
+          <p class="texto-suave mt-4 max-w-xs">Tênis selecionados para acompanhar o seu ritmo.</p>
+        </div>
+        <div>
+          <h2 class="font-bold mb-4">Loja</h2>
+          <button data-rota="catalogo" class="texto-suave block mb-2">Tênis</button>
+          <button data-rota="marcas" class="texto-suave">Marcas</button>
+        </div>
+        <div>
+          <h2 class="font-bold mb-4">Informações</h2>
+          <button data-rota="sobre" class="texto-suave block mb-2">Sobre nós</button>
+          <button data-rota="contato" class="texto-suave">Contato</button>
+        </div>
+        <div>
+          <h2 class="font-bold mb-4">Redes Sociais</h2>
+          <button id="instagramRodape" class="texto-suave block mb-2">Instagram</button>
+          <button id="whatsappRodape" class="texto-suave">WhatsApp</button>
+        </div>
+      </div>
+      <div class="conteiner mt-12 pt-6 border-t border-[#daf1de24] texto-suave text-xs">
+        © 2026 DG IMPORTSS 01. Todos os direitos reservados.
+      </div>
+    </footer>
+  </div>
+
+  <!-- Componente de Alerta (Toast) -->
+  <div id="alertaFlutuante" class="alerta-flutuante" role="status" aria-live="polite"></div>
+
+  <!-- Vinculação do Javascript -->
+  <script src="script.js"></script>
+</body>
+</html>
